@@ -16,11 +16,12 @@ class LayoutProcessor implements LayoutProcessorInterface
     /**
      * @var AttributeMerger
      */
-    private $merger;
+    private AttributeMerger $merger;
 
     /**
      * @var AttributeMapper
      */
+
     private AttributeMapper $attributeMapper;
     /**
      * @var AttributeMetadataDataProvider
@@ -28,6 +29,7 @@ class LayoutProcessor implements LayoutProcessorInterface
     private AttributeMetadataDataProvider $attributeMetadataDataProvider;
 
     /**
+     * LayoutProcessor constructor,
      * @param AttributeMetadataDataProvider $attributeMetadataDataProvider
      * @param AttributeMapper $attributeMapper
      * @param AttributeMerger $attributeMerger
@@ -52,7 +54,8 @@ class LayoutProcessor implements LayoutProcessorInterface
         $elements = $this->getAddressAttributes();
 
         //get fields configuration of our step
-        $fields = &$jsLayout['components']['checkout']['children']['steps']['children']['contact-step']['children']['children']['contact-fieldset']['children'];
+        $fields = &$jsLayout['components']['checkout']['children']['steps']['children']
+        ['contact-step']['children']['contact']['children']['contact-fieldset']['children'];
 
         $fieldCodes = array_keys($fields);
         $elements = array_filter($elements, function ($key) use ($fieldCodes)
